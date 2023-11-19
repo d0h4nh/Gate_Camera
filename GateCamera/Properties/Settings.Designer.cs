@@ -12,7 +12,7 @@ namespace GateCamera.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.71/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.71")]
         public string Cam1 {
             get {
                 return ((string)(this["Cam1"]));
@@ -37,7 +37,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.72/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.72")]
         public string Cam2 {
             get {
                 return ((string)(this["Cam2"]));
@@ -49,7 +49,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.73/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.73")]
         public string Cam3 {
             get {
                 return ((string)(this["Cam3"]));
@@ -61,7 +61,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.74/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.74")]
         public string Cam4 {
             get {
                 return ((string)(this["Cam4"]));
@@ -73,7 +73,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.75/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.75")]
         public string Cam5 {
             get {
                 return ((string)(this["Cam5"]));
@@ -85,7 +85,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.76/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.76")]
         public string Cam6 {
             get {
                 return ((string)(this["Cam6"]));
@@ -97,7 +97,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.77/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.77")]
         public string Cam7 {
             get {
                 return ((string)(this["Cam7"]));
@@ -109,7 +109,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.78/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.78")]
         public string Cam8 {
             get {
                 return ((string)(this["Cam8"]));
@@ -121,7 +121,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.79/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.79")]
         public string Cam9 {
             get {
                 return ((string)(this["Cam9"]));
@@ -133,7 +133,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.80/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.80")]
         public string Cam10 {
             get {
                 return ((string)(this["Cam10"]));
@@ -145,7 +145,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.108/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.108")]
         public string Cam11 {
             get {
                 return ((string)(this["Cam11"]));
@@ -157,7 +157,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.109/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.109")]
         public string Cam12 {
             get {
                 return ((string)(this["Cam12"]));
@@ -169,7 +169,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.110/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.110")]
         public string Cam13 {
             get {
                 return ((string)(this["Cam13"]));
@@ -181,13 +181,85 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rtsp://admin:abcd1234@192.168.41.111/ch1/sub/av_stream")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.111")]
         public string Cam14 {
             get {
                 return ((string)(this["Cam14"]));
             }
             set {
                 this["Cam14"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
+        public string User {
+            get {
+                return ((string)(this["User"]));
+            }
+            set {
+                this["User"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("abcd1234")]
+        public string Password {
+            get {
+                return ((string)(this["Password"]));
+            }
+            set {
+                this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/ch1/sub/av_stream")]
+        public string ViewLink {
+            get {
+                return ((string)(this["ViewLink"]));
+            }
+            set {
+                this["ViewLink"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/ISAPI/Streaming/channels/101/picture")]
+        public string CaptureLink {
+            get {
+                return ((string)(this["CaptureLink"]));
+            }
+            set {
+                this["CaptureLink"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SavePath {
+            get {
+                return ((string)(this["SavePath"]));
+            }
+            set {
+                this["SavePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/ISAPI/Event/notification/alertStream")]
+        public string APILink {
+            get {
+                return ((string)(this["APILink"]));
+            }
+            set {
+                this["APILink"] = value;
             }
         }
     }

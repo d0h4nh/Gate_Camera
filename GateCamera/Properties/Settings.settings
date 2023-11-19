@@ -3,46 +3,64 @@
   <Profiles />
   <Settings>
     <Setting Name="Cam1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.71/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.71</Value>
     </Setting>
     <Setting Name="Cam2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.72/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.72</Value>
     </Setting>
     <Setting Name="Cam3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.73/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.73</Value>
     </Setting>
     <Setting Name="Cam4" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.74/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.74</Value>
     </Setting>
     <Setting Name="Cam5" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.75/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.75</Value>
     </Setting>
     <Setting Name="Cam6" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.76/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.76</Value>
     </Setting>
     <Setting Name="Cam7" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.77/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.77</Value>
     </Setting>
     <Setting Name="Cam8" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.78/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.78</Value>
     </Setting>
     <Setting Name="Cam9" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.79/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.79</Value>
     </Setting>
     <Setting Name="Cam10" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.80/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.80</Value>
     </Setting>
     <Setting Name="Cam11" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.108/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.108</Value>
     </Setting>
     <Setting Name="Cam12" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.109/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.109</Value>
     </Setting>
     <Setting Name="Cam13" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.110/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.110</Value>
     </Setting>
     <Setting Name="Cam14" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rtsp://admin:abcd1234@192.168.41.111/ch1/sub/av_stream</Value>
+      <Value Profile="(Default)">192.168.41.111</Value>
+    </Setting>
+    <Setting Name="User" Type="System.String" Scope="User">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">abcd1234</Value>
+    </Setting>
+    <Setting Name="ViewLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/ch1/sub/av_stream</Value>
+    </Setting>
+    <Setting Name="CaptureLink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/ISAPI/Streaming/channels/101/picture</Value>
+    </Setting>
+    <Setting Name="SavePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="APILink" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/ISAPI/Event/notification/alertStream</Value>
     </Setting>
   </Settings>
 </SettingsFile>
