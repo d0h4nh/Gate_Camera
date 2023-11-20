@@ -242,12 +242,12 @@ namespace GateCamera.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SavePath {
+        public string SaveLocation {
             get {
-                return ((string)(this["SavePath"]));
+                return ((string)(this["SaveLocation"]));
             }
             set {
-                this["SavePath"] = value;
+                this["SaveLocation"] = value;
             }
         }
         

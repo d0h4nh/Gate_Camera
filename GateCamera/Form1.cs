@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GateCamera.Properties;
+using System;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -19,9 +20,11 @@ namespace GateCamera
         private VlcControl cam2 = new VlcControl();
         private VlcControl cam3 = new VlcControl();
         private VlcControl cam4 = new VlcControl();
+        private VlcControl cam5 = new VlcControl();
         private int gate = 1;
         private string lane = "Lane 1";
         private string in_out = " - Gate IN";
+        Thread t;
         public Form1()
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace GateCamera
             cam2.VlcLibDirectory = libDirectory;
             cam2.Dock = DockStyle.Fill;
             cam2.EndInit();
-            this.tlp_main.Controls.Add(cam2,1,2);
+            this.tlp_main.Controls.Add(cam2,2,2);
 
             cam3.BeginInit();
             cam3.VlcLibDirectory = libDirectory;
@@ -52,12 +55,20 @@ namespace GateCamera
             cam4.VlcLibDirectory = libDirectory;
             cam4.Dock = DockStyle.Fill;
             cam4.EndInit();
-            this.tlp_main.Controls.Add(cam4,2,2);
+            this.tlp_main.Controls.Add(cam4,3,2);
+
+            cam5.BeginInit();
+            cam5.VlcLibDirectory = libDirectory;
+            cam5.Dock = DockStyle.Fill;
+            cam5.EndInit();
+            this.tlp_main.Controls.Add(cam5, 3, 1);
 
 
             Load_title(lane, in_out);
             LoadCamera(gate);
             BindData("ai_data.csv");
+            txt_filesave.Text = Properties.Settings.Default["SaveLocation"].ToString();
+            btn_stoptrack.Enabled = false;
         }
         private void BindData(string filePath)
         {
@@ -125,6 +136,7 @@ namespace GateCamera
             LoadCamera(gate);
             lane = "Lane 1";
             Load_title(lane, in_out);
+            stop_tracking();
 
         }
 
@@ -134,6 +146,7 @@ namespace GateCamera
             LoadCamera(gate);
             lane = "Lane 2";
             Load_title(lane, in_out);
+            stop_tracking();
         }
 
         private void RadioButton3_CheckedChanged(object sender, EventArgs e)
@@ -142,6 +155,7 @@ namespace GateCamera
             LoadCamera(gate);
             lane = "Lane 3";
             Load_title(lane, in_out);
+            stop_tracking();
         }
 
         private void RadioButton4_CheckedChanged(object sender, EventArgs e)
@@ -150,6 +164,7 @@ namespace GateCamera
             LoadCamera(gate);
             lane = "Lane 4";
             Load_title(lane, in_out);
+            stop_tracking();
         }
 
         private void RadioButton5_CheckedChanged(object sender, EventArgs e)
@@ -158,6 +173,7 @@ namespace GateCamera
             LoadCamera(gate);
             lane = "Lane Scale 1";
             Load_title(lane, in_out);
+            stop_tracking();
         }
 
         private void RadioButton6_CheckedChanged(object sender, EventArgs e)
@@ -166,23 +182,26 @@ namespace GateCamera
             LoadCamera(gate);
             lane = "Lane Scale 2";
             Load_title(lane, in_out);
+            stop_tracking();
         }
 
         private void rd_gatein_CheckedChanged(object sender, EventArgs e)
         {
             in_out = " - Gate IN";
             Load_title(lane, in_out);
+            
         }
 
         private void rd_gateout_CheckedChanged(object sender, EventArgs e)
         {
             in_out = " - Gate OUT";
             Load_title(lane, in_out);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Thread t = new Thread(() => {
+            t = new Thread(() => {
                 APIrequest("http://" + Properties.Settings.Default["Cam" + gate] + Properties.Settings.Default["APILink"], "admin", "abcd1234");
             });
             t.IsBackground = true;
@@ -196,6 +215,7 @@ namespace GateCamera
                 t.Start ();
                 this.lbl_status.Text = "Running";
             }
+            btn_stoptrack.Enabled = true; btn_starttrack.Enabled=false;
         }
         private void APIrequest(string uri,string user,string password)
         {
@@ -227,12 +247,16 @@ namespace GateCamera
                 if (str.Contains("VMD"))
                 {
                     Debug.Write(str);
+                    this.Invoke(new Action(() => {
+                        this.richTextBox1.AppendText(DateTime.Now.ToString()+" "+lane+" "+ "Motion detected!\n\r");
+                    }));
                     try
                     {
-                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate] + Properties.Settings.Default["CaptureLink"], "E:\\" + DateTime.Now.ToString("yyMMddHHmmss") + lane+in_out+".jpg");
-                        requestFrame("http://" + Properties.Settings.Default["Cam" + (gate+1)] + Properties.Settings.Default["CaptureLink"], "E:\\" + DateTime.Now.ToString("yyMMddHHmmss") + lane + in_out + ".jpg");
+                        string filepath = Properties.Settings.Default["SaveLocation"] + "\\" + DateTime.Now.ToString("yyMMddHHmmss");
+                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ","")+in_out.Replace(" ", "") + "-01"+".jpg");
+                        requestFrame("http://" + Properties.Settings.Default["Cam" + (gate+1)] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-02"+ ".jpg");
                     }
-                    catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+                    catch (Exception ex) { Debug.WriteLine(ex); }
 
                     Debug.Write("Captured");
                 }
@@ -257,30 +281,36 @@ namespace GateCamera
             request.BeginGetResponse(result => {
                 finishRequestFrame(result, request, filename);
             }, null);
+            
 
         }
         void finishRequestFrame(IAsyncResult result,
                               HttpWebRequest request,
                               string filename)
         {
-            using (HttpWebResponse response =
-             (HttpWebResponse)request.EndGetResponse(result))
+            try
             {
-                Stream responseStream = response.GetResponseStream();
-
-                using (Bitmap frame = new Bitmap(responseStream))
+                using (HttpWebResponse response =
+                 (HttpWebResponse)request.EndGetResponse(result))
                 {
-                    if (frame != null)
+                    Stream responseStream = response.GetResponseStream();
+
+                    using (Bitmap frame = new Bitmap(responseStream))
                     {
-                        Bitmap camsaved = (Bitmap)frame.Clone();
-                        camsaved.Save(filename);
+                        if (frame != null)
+                        {
+                            Bitmap camsaved = (Bitmap)frame.Clone();
+                            camsaved.Save(filename);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không lưu được ảnh, vui lòng thử lại", "Lỗi");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Không lưu được ảnh, vui lòng thử lại", "Lỗi");
-                    }
+                    responseStream.Close ();
                 }
             }
+            catch (Exception ex) { Debug.WriteLine(ex); }
         }
         private string URIbuilder(string cam, string u, string p, string link)
         {
@@ -288,6 +318,39 @@ namespace GateCamera
             return "rtsp://" + u + ":" + p + "@" + cam + ":554" + link;
         }
 
-        
+        private void btn_browse_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+        }
+
+        private void btn_savepath_Click(object sender, EventArgs e)
+        {
+            Settings set = Settings.Default;
+            if (folderBrowserDialog1.SelectedPath != "")
+            {
+                Properties.Settings.Default["SaveLocation"] = folderBrowserDialog1.SelectedPath;
+                set.Save();
+                txt_filesave.Text = Properties.Settings.Default["SaveLocation"].ToString();
+            }
+            else
+            {
+                Properties.Settings.Default["SaveLocation"] = txt_filesave.Text;
+            }
+        }
+
+        private void btn_stoptrack_Click(object sender, EventArgs e)
+        {
+            stop_tracking();
+        }
+        private void stop_tracking()
+        {
+            if (t != null) 
+            { 
+                t.Abort(); 
+            }       
+            lbl_status.Text = "Stopped";
+            btn_starttrack.Enabled = true;
+            btn_stoptrack.Enabled = false;
+        }
     }
 }

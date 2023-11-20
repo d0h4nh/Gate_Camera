@@ -56,7 +56,7 @@
     <Setting Name="CaptureLink" Type="System.String" Scope="User">
       <Value Profile="(Default)">/ISAPI/Streaming/channels/101/picture</Value>
     </Setting>
-    <Setting Name="SavePath" Type="System.String" Scope="User">
+    <Setting Name="SaveLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="APILink" Type="System.String" Scope="User">
