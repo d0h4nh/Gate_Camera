@@ -1,0 +1,370 @@
+﻿using GateCamera.Properties;
+using System;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Net;
+using System.Reflection;
+using System.Security.Policy;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+using Vlc.DotNet.Forms;
+
+namespace GateCamera
+{
+    public partial class Form1 : Form
+    {
+        private VlcControl cam1 = new VlcControl();
+        private VlcControl cam2 = new VlcControl();
+        private VlcControl cam3 = new VlcControl();
+        private VlcControl cam4 = new VlcControl();
+        private VlcControl cam5 = new VlcControl();
+        private int gate = 1;
+        private string lane = "Lane 1";
+        private string in_out = " - Gate IN";
+        Thread t;
+        public Form1()
+        {
+            InitializeComponent();
+            var currentAssembly = Assembly.GetEntryAssembly();
+            var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
+            // Default installation path of VideoLAN.LibVLC.Windows
+            var libDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+
+            cam1.BeginInit();
+            cam1.VlcLibDirectory = libDirectory;
+            cam1.Dock = DockStyle.Fill;
+            cam1.EndInit();
+            this.tlp_main.Controls.Add(cam1,1,1);
+
+            cam2.BeginInit();
+            cam2.VlcLibDirectory = libDirectory;
+            cam2.Dock = DockStyle.Fill;
+            cam2.EndInit();
+            this.tlp_main.Controls.Add(cam2,2,2);
+
+            cam3.BeginInit();
+            cam3.VlcLibDirectory = libDirectory;
+            cam3.Dock = DockStyle.Fill;
+            cam3.EndInit();
+            this.tlp_main.Controls.Add(cam3,2,1);
+
+            cam4.BeginInit();
+            cam4.VlcLibDirectory = libDirectory;
+            cam4.Dock = DockStyle.Fill;
+            cam4.EndInit();
+            this.tlp_main.Controls.Add(cam4,3,2);
+
+            cam5.BeginInit();
+            cam5.VlcLibDirectory = libDirectory;
+            cam5.Dock = DockStyle.Fill;
+            cam5.EndInit();
+            this.tlp_main.Controls.Add(cam5, 3, 1);
+
+
+            Load_title(lane, in_out);
+            LoadCamera(gate);
+            BindData("ai_data.csv");
+            txt_filesave.Text = Properties.Settings.Default["SaveLocation"].ToString();
+            btn_stoptrack.Enabled = false;
+        }
+        private void BindData(string filePath)
+        {
+            DataTable dt = new DataTable();
+            string[] lines = System.IO.File.ReadAllLines(filePath);
+            if (lines.Length > 0)
+            {
+                //first line to create header
+                string firstLine = lines[0];
+                string[] headerLabels = firstLine.Split(',');
+                foreach (string headerWord in headerLabels)
+                {
+                    dt.Columns.Add(new DataColumn(headerWord));
+                }
+                //For Data
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string[] dataWords = lines[i].Split(',');
+                    DataRow dr = dt.NewRow();
+                    int columnIndex = 0;
+                    foreach (string headerWord in headerLabels)
+                    {
+                        dr[headerWord] = dataWords[columnIndex++];
+                    }
+                    dt.Rows.Add(dr);
+                }
+            }
+            if (dt.Rows.Count > 0)
+            {
+                dataGridView1.DataSource = dt;
+            }
+
+        }
+        private void LoadPicture (string filePath)
+        {
+            
+        }
+        private void LoadCamera(int i)
+        {
+            StopCamera();
+            try
+            {
+                
+                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "1"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
+                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "2"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
+                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "3"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
+                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "4"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
+                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "5"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
+                cam1.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "1"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));             
+                cam2.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "2"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));
+                cam3.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "3"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));
+                cam4.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "4"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));
+                cam5.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "5"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));
+            }
+            catch (Exception ex) { }          
+        }
+        private void StopCamera()
+        {
+            try
+            {
+                cam1.Stop();
+                cam2.Stop();
+                cam3.Stop();
+                cam4.Stop();
+                cam5.Stop();
+            }
+            catch (Exception ex) { }
+        }
+        private void Load_title(string lane, string in_out)
+        {
+            this.Text = lane + in_out;
+        }
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            gate = 1;
+            LoadCamera(gate);
+            lane = "Lane 1";
+            Load_title(lane, in_out);
+            stop_tracking();
+
+        }
+
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            gate = 2;
+            LoadCamera(gate);
+            lane = "Lane 2";
+            Load_title(lane, in_out);
+            stop_tracking();
+        }
+
+        private void RadioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            gate = 3;
+            LoadCamera(gate);
+            lane = "Lane 3";
+            Load_title(lane, in_out);
+            stop_tracking();
+        }
+
+        private void RadioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            gate = 4;
+            LoadCamera(gate);
+            lane = "Lane 4";
+            Load_title(lane, in_out);
+            stop_tracking();
+        }
+
+        private void RadioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            gate = 5;
+            LoadCamera(gate);
+            lane = "Lane Scale 1";
+            Load_title(lane, in_out);
+            stop_tracking();
+        }
+
+        private void RadioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            gate = 6;
+            LoadCamera(gate);
+            lane = "Lane Scale 2";
+            Load_title(lane, in_out);
+            stop_tracking();
+        }
+
+        private void rd_gatein_CheckedChanged(object sender, EventArgs e)
+        {
+            in_out = " - Gate IN";
+            Load_title(lane, in_out);
+            
+        }
+
+        private void rd_gateout_CheckedChanged(object sender, EventArgs e)
+        {
+            in_out = " - Gate OUT";
+            Load_title(lane, in_out);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            t = new Thread(() => {
+                APIrequest("http://" + Properties.Settings.Default["Cam" + gate+"1"] + Properties.Settings.Default["APILink"], "admin", "abcd1234");
+            });
+            t.IsBackground = true;
+            if (t.IsAlive)
+            {
+                this.lbl_status.Text = "Running";
+            }
+            else
+            {
+                this.lbl_status.Text = "Stopped";
+                t.Start ();
+                this.lbl_status.Text = "Running";
+            }
+            btn_stoptrack.Enabled = true; btn_starttrack.Enabled=false;
+        }
+        private void APIrequest(string uri,string user,string password)
+        {
+            Uri myUri = new Uri(uri);
+            WebRequest myWebRequest = HttpWebRequest.Create(myUri);
+
+            HttpWebRequest myHttpWebRequest = (HttpWebRequest)myWebRequest;
+
+            NetworkCredential myNetworkCredential = new NetworkCredential(user, password);
+
+            CredentialCache myCredentialCache = new CredentialCache();
+            myCredentialCache.Add(myUri, "Digest", myNetworkCredential);
+
+            myHttpWebRequest.PreAuthenticate = true;
+            myHttpWebRequest.Credentials = myCredentialCache;
+
+            WebResponse myWebResponse = myWebRequest.GetResponse();
+
+            Stream responseStream = myWebResponse.GetResponseStream();
+
+            StreamReader myStreamReader = new StreamReader(responseStream, Encoding.Default);
+            Char[] read = new Char[256];
+            int count = myStreamReader.Read(read, 0, 256);
+            Debug.WriteLine("HTML...\r\n");
+            while (count > 0)
+            {
+                // Dumps the 256 characters on a string and displays the string to the console.
+                String str = new String(read, 0, count);
+                if (str.Contains("VMD"))
+                {
+                    Debug.Write(str);
+                    this.Invoke(new Action(() => {
+                        this.richTextBox1.AppendText(DateTime.Now.ToString()+" "+lane+" "+ "Motion detected!\n\r");
+                    }));
+                    try
+                    {
+                        string filepath = Properties.Settings.Default["SaveLocation"] + "\\" + DateTime.Now.ToString("yyMMddHHmmss");
+                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"1"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-01" + ".jpg");
+                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"2"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-02" + ".jpg");
+                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"3"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-03" + ".jpg");
+                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"4"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-04" + ".jpg");
+                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"5"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-05" + ".jpg");
+                    }
+                    catch (Exception ex) { Debug.WriteLine(ex); }
+
+                    Debug.Write("Captured");
+                }
+                count = myStreamReader.Read(read, 0, 256);
+
+
+            }
+            Debug.WriteLine("");
+            //string pageContent = myStreamReader.ReadToEnd();
+            responseStream.Close();
+
+            myWebResponse.Close();
+
+            this.lbl_status.Text = "Stopped";
+        }
+        private void requestFrame(string url, string filename)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Credentials = new NetworkCredential(Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString());
+            request.Proxy = null;
+
+            request.BeginGetResponse(result => {
+                finishRequestFrame(result, request, filename);
+            }, null);
+            
+
+        }
+        void finishRequestFrame(IAsyncResult result,
+                              HttpWebRequest request,
+                              string filename)
+        {
+            try
+            {
+                using (HttpWebResponse response =
+                 (HttpWebResponse)request.EndGetResponse(result))
+                {
+                    Stream responseStream = response.GetResponseStream();
+
+                    using (Bitmap frame = new Bitmap(responseStream))
+                    {
+                        if (frame != null)
+                        {
+                            Bitmap camsaved = (Bitmap)frame.Clone();
+                            camsaved.Save(filename);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không lưu được ảnh, vui lòng thử lại", "Lỗi");
+                        }
+                    }
+                    responseStream.Close ();
+                }
+            }
+            catch (Exception ex) { Debug.WriteLine(ex); }
+        }
+        private string URIbuilder(string cam, string u, string p, string link)
+        {
+
+            return "rtsp://" + u + ":" + p + "@" + cam + ":554" + link;
+        }
+
+        private void btn_browse_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+        }
+
+        private void btn_savepath_Click(object sender, EventArgs e)
+        {
+            Settings set = Settings.Default;
+            if (folderBrowserDialog1.SelectedPath != "")
+            {
+                Properties.Settings.Default["SaveLocation"] = folderBrowserDialog1.SelectedPath;
+                set.Save();
+                txt_filesave.Text = Properties.Settings.Default["SaveLocation"].ToString();
+            }
+            else
+            {
+                Properties.Settings.Default["SaveLocation"] = txt_filesave.Text;
+            }
+        }
+
+        private void btn_stoptrack_Click(object sender, EventArgs e)
+        {
+            stop_tracking();
+        }
+        private void stop_tracking()
+        {
+            if (t != null) 
+            { 
+                t.Abort(); 
+            }       
+            lbl_status.Text = "Stopped";
+            btn_starttrack.Enabled = true;
+            btn_stoptrack.Enabled = false;
+        }
+    }
+}
