@@ -1,15 +1,21 @@
 ﻿using GateCamera.Properties;
+using movement_detection.src;
+using OpenCvSharp;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Security.Policy;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using Vlc.DotNet.Forms;
 
 namespace GateCamera
@@ -21,6 +27,7 @@ namespace GateCamera
         private VlcControl cam3 = new VlcControl();
         private VlcControl cam4 = new VlcControl();
         private VlcControl cam5 = new VlcControl();
+        private VlcControl cam6 = new VlcControl();
         private int gate = 1;
         private string lane = "Lane 1";
         private string in_out = " - Gate IN";
@@ -37,25 +44,25 @@ namespace GateCamera
             cam1.VlcLibDirectory = libDirectory;
             cam1.Dock = DockStyle.Fill;
             cam1.EndInit();
-            this.tlp_main.Controls.Add(cam1,1,1);
+            this.tlp_main.Controls.Add(cam1, 1, 1);
 
             cam2.BeginInit();
             cam2.VlcLibDirectory = libDirectory;
             cam2.Dock = DockStyle.Fill;
             cam2.EndInit();
-            this.tlp_main.Controls.Add(cam2,2,2);
+            this.tlp_main.Controls.Add(cam2, 1, 2);
 
             cam3.BeginInit();
             cam3.VlcLibDirectory = libDirectory;
             cam3.Dock = DockStyle.Fill;
             cam3.EndInit();
-            this.tlp_main.Controls.Add(cam3,2,1);
+            this.tlp_main.Controls.Add(cam3, 2, 1);
 
             cam4.BeginInit();
             cam4.VlcLibDirectory = libDirectory;
             cam4.Dock = DockStyle.Fill;
             cam4.EndInit();
-            this.tlp_main.Controls.Add(cam4,3,2);
+            this.tlp_main.Controls.Add(cam4, 2, 2);
 
             cam5.BeginInit();
             cam5.VlcLibDirectory = libDirectory;
@@ -63,13 +70,21 @@ namespace GateCamera
             cam5.EndInit();
             this.tlp_main.Controls.Add(cam5, 3, 1);
 
+            cam6.BeginInit();
+            cam6.VlcLibDirectory = libDirectory;
+            cam6.Dock = DockStyle.Fill;
+            cam6.EndInit();
+            this.tlp_main.Controls.Add(cam6, 3, 2);
+
 
             Load_title(lane, in_out);
             LoadCamera(gate);
             BindData("ai_data.csv");
             txt_filesave.Text = Properties.Settings.Default["SaveLocation"].ToString();
             btn_stoptrack.Enabled = false;
+            //LoadXMLSetting();
         }
+
         private void BindData(string filePath)
         {
             DataTable dt = new DataTable();
@@ -102,28 +117,41 @@ namespace GateCamera
             }
 
         }
-        private void LoadPicture (string filePath)
+        private void LoadPicture(string filePath)
         {
-            
+
         }
         private void LoadCamera(int i)
         {
             StopCamera();
-            try
+            var cambox = new List<VlcControl> { cam1, cam2, cam3, cam4, cam5, cam6 };
+            for (int j = 1; j < 7; j++)
             {
-                
-                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "1"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
-                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "2"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
-                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "3"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
-                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "4"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
-                Debug.WriteLine(URIbuilder(Properties.Settings.Default["Cam" + gate + "5"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString()));
-                cam1.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "1"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));             
-                cam2.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "2"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));
-                cam3.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "3"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));
-                cam4.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "4"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));
-                cam5.Play(new Uri(URIbuilder(Properties.Settings.Default["Cam" + gate + "5"].ToString(), Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString(), Properties.Settings.Default["Viewlink"].ToString())));
+                CamSetting camSetting = LoadXMLSetting(i.ToString() + j.ToString());
+                if (camSetting.IP != "")
+                {
+                    Debug.WriteLine("alo");
+                    Debug.WriteLine(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+                    cambox[j - 1].Play(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+                }
             }
-            catch (Exception ex) { }          
+
+
+            //try
+            //{
+            //    CamSetting camSetting = LoadXMLSetting("11");
+            //    Debug.WriteLine(camSetting.IP.ToString());
+            //cam1.Play(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+            //camSetting = LoadXMLSetting(i.ToString() + "2");    
+            //cam2.Play(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+            //camSetting = LoadXMLSetting(i.ToString() +"3");    
+            //cam3.Play(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+            //camSetting = LoadXMLSetting(i.ToString() + "4");    
+            //cam4.Play(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+            //camSetting = LoadXMLSetting(i.ToString() + "5");    
+            //cam5.Play(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+            //}
+            //catch (Exception ex) { Debug.Write(ex); }
         }
         private void StopCamera()
         {
@@ -134,8 +162,9 @@ namespace GateCamera
                 cam3.Stop();
                 cam4.Stop();
                 cam5.Stop();
+                cam6.Stop();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Debug.Write(ex); }
         }
         private void Load_title(string lane, string in_out)
         {
@@ -200,7 +229,7 @@ namespace GateCamera
         {
             in_out = " - Gate IN";
             Load_title(lane, in_out);
-            
+
         }
 
         private void rd_gateout_CheckedChanged(object sender, EventArgs e)
@@ -212,8 +241,17 @@ namespace GateCamera
 
         private void button1_Click(object sender, EventArgs e)
         {
-            t = new Thread(() => {
-                APIrequest("http://" + Properties.Settings.Default["Cam" + gate+"1"] + Properties.Settings.Default["APILink"], "admin", "abcd1234");
+            MotionDetector _detector = new();
+
+
+            t = new Thread(() =>
+            {
+                InitDetection(
+                windowTitle: "webcam",
+                source: 0,
+                detector: _detector,
+                drawMotion: false,
+                detectEPI: true);
             });
             t.IsBackground = true;
             if (t.IsAlive)
@@ -223,12 +261,13 @@ namespace GateCamera
             else
             {
                 this.lbl_status.Text = "Stopped";
-                t.Start ();
+                t.Start();
                 this.lbl_status.Text = "Running";
             }
-            btn_stoptrack.Enabled = true; btn_starttrack.Enabled=false;
+            btn_stoptrack.Enabled = true; btn_starttrack.Enabled = false;
+
         }
-        private void APIrequest(string uri,string user,string password)
+        private void APIrequest(string uri, string user, string password)
         {
             Uri myUri = new Uri(uri);
             WebRequest myWebRequest = HttpWebRequest.Create(myUri);
@@ -258,19 +297,11 @@ namespace GateCamera
                 if (str.Contains("VMD"))
                 {
                     Debug.Write(str);
-                    this.Invoke(new Action(() => {
-                        this.richTextBox1.AppendText(DateTime.Now.ToString()+" "+lane+" "+ "Motion detected!\n\r");
-                    }));
-                    try
+                    this.Invoke(new Action(() =>
                     {
-                        string filepath = Properties.Settings.Default["SaveLocation"] + "\\" + DateTime.Now.ToString("yyMMddHHmmss");
-                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"1"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-01" + ".jpg");
-                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"2"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-02" + ".jpg");
-                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"3"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-03" + ".jpg");
-                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"4"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-04" + ".jpg");
-                        requestFrame("http://" + Properties.Settings.Default["Cam" + gate +"5"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-05" + ".jpg");
-                    }
-                    catch (Exception ex) { Debug.WriteLine(ex); }
+                        this.richTextBox1.AppendText(DateTime.Now.ToString() + " " + lane + " " + "Motion detected!\n\r");
+                    }));
+
 
                     Debug.Write("Captured");
                 }
@@ -286,16 +317,45 @@ namespace GateCamera
 
             this.lbl_status.Text = "Stopped";
         }
-        private void requestFrame(string url, string filename)
+        private void takePicture()
+        {
+            try
+            {
+                var cambox = new List<VlcControl> { cam1, cam2, cam3, cam4, cam5, cam6 };
+                string filepath = Properties.Settings.Default["SaveLocation"] + "\\" + DateTime.Now.ToString("yyMMddHHmmss");
+                for (int j = 1; j < 7; j++)
+                {
+                    CamSetting camSetting = LoadXMLSetting(gate.ToString() + j.ToString());
+                    if (camSetting.IP != "")
+                    {
+                        //Debug.WriteLine("alo");
+                        //Debug.WriteLine(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+                        //cambox[j - 1].Play(new Uri(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString())));
+                        //requestFrame("http://" + camSetting.IP.ToString() + camSetting.CaptureLink.ToString(), filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-0" + j + ".jpg", camSetting.User.ToString(), camSetting.Password.ToString());
+                        cambox[j-1].TakeSnapshot(filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-0" + j + ".jpg",800,600);
+
+                    }
+                }
+                //requestFrame("http://" + Properties.Settings.Default["Cam" + gate + "1"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-01" + ".jpg");
+                //requestFrame("http://" + Properties.Settings.Default["Cam" + gate + "2"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-02" + ".jpg");
+                //requestFrame("http://" + Properties.Settings.Default["Cam" + gate + "3"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-03" + ".jpg");
+                //requestFrame("http://" + Properties.Settings.Default["Cam" + gate + "4"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-04" + ".jpg");
+                //requestFrame("http://" + Properties.Settings.Default["Cam" + gate + "5"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-05" + ".jpg");
+                //requestFrame("http://" + Properties.Settings.Default["Cam" + gate + "5"] + Properties.Settings.Default["CaptureLink"], filepath + lane.Replace(" ", "") + in_out.Replace(" ", "") + "-06" + ".jpg");
+            }
+            catch (Exception ex) { Debug.WriteLine(ex); }
+        }
+        private void requestFrame(string url, string filename, string user, string pass)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Credentials = new NetworkCredential(Properties.Settings.Default["User"].ToString(), Properties.Settings.Default["Password"].ToString());
+            request.Credentials = new NetworkCredential(user, pass);
             request.Proxy = null;
 
-            request.BeginGetResponse(result => {
+            request.BeginGetResponse(result =>
+            {
                 finishRequestFrame(result, request, filename);
             }, null);
-            
+
 
         }
         void finishRequestFrame(IAsyncResult result,
@@ -321,15 +381,15 @@ namespace GateCamera
                             MessageBox.Show("Không lưu được ảnh, vui lòng thử lại", "Lỗi");
                         }
                     }
-                    responseStream.Close ();
+                    responseStream.Close();
                 }
             }
             catch (Exception ex) { Debug.WriteLine(ex); }
         }
-        private string URIbuilder(string cam, string u, string p, string link)
+        private string URIbuilder(string cam, string u, string p, string link, string port)
         {
 
-            return "rtsp://" + u + ":" + p + "@" + cam + ":554" + link;
+            return "rtsp://" + u + ":" + p + "@" + cam + ":" + port + link;
         }
 
         private void btn_browse_Click(object sender, EventArgs e)
@@ -358,13 +418,80 @@ namespace GateCamera
         }
         private void stop_tracking()
         {
-            if (t != null) 
-            { 
-                t.Abort(); 
-            }       
+            if (t != null)
+            {
+                try
+                {
+                    t.Abort();
+                }
+                catch (Exception ex) { Debug.WriteLine(ex); }
+            }
             lbl_status.Text = "Stopped";
             btn_starttrack.Enabled = true;
             btn_stoptrack.Enabled = false;
+        }
+        private void Detect()
+        {
+
+        }
+
+        private void InitDetection(MotionDetector detector, string windowTitle, dynamic source, bool drawMotion, bool detectEPI)
+        {
+            CamSetting camSetting = LoadXMLSetting(gate.ToString() + "1");
+            Debug.WriteLine(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString()));
+            using VideoCapture videoCapture = new VideoCapture(URIbuilder(camSetting.IP.ToString(), camSetting.User.ToString(), camSetting.Password.ToString(), camSetting.StreamLink.ToString(), camSetting.RTSPport.ToString()));
+            using Mat frameCopy = new();
+
+            while (videoCapture.IsOpened())
+            {
+                using Mat frame = videoCapture.RetrieveMat();
+                if (!frame.Empty())
+                {
+                    frame.CopyTo(frameCopy);
+
+                    if (detector.IsMotionDetected(frameCopy, drawMotion))
+                    {
+                        takePicture();
+                        this.Invoke(new Action(() =>
+                        {
+                            this.richTextBox1.AppendText(DateTime.Now.ToString() + " " + lane + " " + "Motion detected!\n\r");
+                        }));
+                    }
+
+                    //Cv2.ImShow(windowTitle, frameCopy);
+
+                }
+
+                /*if (Cv2.WaitKey(40) == 'q')
+                {
+                    break;
+                }*/
+            }
+
+            //Cv2.DestroyWindow(windowTitle);
+        }
+        private CamSetting LoadXMLSetting(string camno)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load((AppContext.BaseDirectory) + "settings.xml");
+
+
+            XmlNode node = doc.SelectSingleNode("//Camera[@name='Cam" + camno + "']");
+            //string att = node["IP"]?.InnerText;
+            CamSetting camSetting = new CamSetting();
+            camSetting.IP = node["IP"]?.InnerText;
+            camSetting.StreamLink = node["StreamLink"]?.InnerText;
+            camSetting.CaptureLink = node["CaptureLink"]?.InnerText;
+            camSetting.User = node["User"]?.InnerText;
+            camSetting.Password = node["Password"]?.InnerText;
+            camSetting.RTSPport = node["RTSPport"]?.InnerText;
+            Debug.WriteLine(camSetting.User);
+            return camSetting;
+        }
+
+        private void btn_testpic_Click(object sender, EventArgs e)
+        {
+            takePicture();
         }
     }
 }

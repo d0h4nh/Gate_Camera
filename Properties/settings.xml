@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Camera_Config>
+  <Camera name="Cam11">
+    <IP>192.168.41.71</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam12">
+    <IP>192.168.41.72</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam13">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam14">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam15">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam16">
+  	<IP></IP>
+  	<StreamLink>/Streaming/Channels/102/</StreamLink>
+  	<CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+  	<RTSPport>554</RTSPport>
+  	<User>admin</User>
+  	<Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam21">
+    <IP>192.168.41.73</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam22">
+    <IP>192.168.41.74</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam23">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam24">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam25">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam26">
+  	<IP></IP>
+  	<StreamLink>/Streaming/Channels/102/</StreamLink>
+  	<CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+  	<RTSPport>554</RTSPport>
+  	<User>admin</User>
+  	<Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam31">
+    <IP>192.168.41.75</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam32">
+    <IP>192.168.41.76</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam33">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam34">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam35">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam36">
+  	<IP></IP>
+  	<StreamLink>/Streaming/Channels/102/</StreamLink>
+  	<CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+  	<RTSPport>554</RTSPport>
+  	<User>admin</User>
+  	<Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam41">
+    <IP>192.168.41.77</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam42">
+    <IP>192.168.41.78</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam43">
+    <IP>192.168.41.112</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam44">
+    <IP>192.168.41.113</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam45">
+    <IP>192.168.41.115</IP>
+    <StreamLink>/13</StreamLink>
+    <CaptureLink>/11</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>admin</Password>
+  </Camera>
+  <Camera name="Cam46">
+	<IP>192.168.41.116</IP>
+	<StreamLink>/13</StreamLink>
+	<CaptureLink>/11</CaptureLink>
+	<RTSPport>554</RTSPport>
+	<User>admin</User>
+	<Password>admin</Password>
+  </Camera>
+  <Camera name="Cam51">
+    <IP>192.168.41.79</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam52">
+    <IP>192.168.41.80</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam53">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam54">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam55">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+	<Camera name="Cam56">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam61">
+    <IP>192.168.41.108</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam62">
+    <IP>192.168.41.109</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam63">
+    <IP>192.168.41.110</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam64">
+    <IP>192.168.41.111</IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam65">
+    <IP></IP>
+    <StreamLink>/Streaming/Channels/102/</StreamLink>
+    <CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+    <RTSPport>554</RTSPport>
+    <User>admin</User>
+    <Password>abcd1234</Password>
+  </Camera>
+  <Camera name="Cam66">
+  	<IP></IP>
+  	<StreamLink>/Streaming/Channels/102/</StreamLink>
+  	<CaptureLink>/ISAPI/Streaming/channels/101/picture</CaptureLink>
+  	<RTSPport>554</RTSPport>
+  	<User>admin</User>
+  	<Password>abcd1234</Password>
+  </Camera>
+</Camera_Config>

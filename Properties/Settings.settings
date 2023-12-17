@@ -2,48 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GateCamera.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Cam11" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.41.71</Value>
-    </Setting>
-    <Setting Name="Cam12" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.41.72</Value>
-    </Setting>
-    <Setting Name="Cam13" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Cam14" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Cam15" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Cam21" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.41.73</Value>
-    </Setting>
-    <Setting Name="Cam22" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.41.74</Value>
-    </Setting>
-    <Setting Name="Cam23" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Cam24" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Cam25" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Cam31" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.41.75</Value>
-    </Setting>
-    <Setting Name="Cam32" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.41.76</Value>
-    </Setting>
-    <Setting Name="Cam33" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Cam34" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="User" Type="System.String" Scope="User">
       <Value Profile="(Default)">admin</Value>
     </Setting>
@@ -59,11 +17,53 @@
     <Setting Name="APILink" Type="System.String" Scope="User">
       <Value Profile="(Default)">/ISAPI/Event/notification/alertStream</Value>
     </Setting>
+    <Setting Name="Cam11" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.41.71</Value>
+    </Setting>
+    <Setting Name="Cam12" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.41.72</Value>
+    </Setting>
+    <Setting Name="Cam13" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/</Value>
+    </Setting>
+    <Setting Name="Cam14" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/</Value>
+    </Setting>
+    <Setting Name="Cam15" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/</Value>
+    </Setting>
+    <Setting Name="Cam21" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.41.73</Value>
+    </Setting>
+    <Setting Name="Cam22" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.41.74</Value>
+    </Setting>
+    <Setting Name="Cam23" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/</Value>
+    </Setting>
+    <Setting Name="Cam24" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/</Value>
+    </Setting>
+    <Setting Name="Cam25" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/</Value>
+    </Setting>
+    <Setting Name="Cam31" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.41.75</Value>
+    </Setting>
+    <Setting Name="Cam32" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.41.76</Value>
+    </Setting>
+    <Setting Name="Cam33" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/</Value>
+    </Setting>
+    <Setting Name="Cam34" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/</Value>
+    </Setting>
     <Setting Name="ViewLink" Type="System.String" Scope="User">
       <Value Profile="(Default)">/Streaming/Channels/102/</Value>
     </Setting>
     <Setting Name="Cam35" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">/</Value>
     </Setting>
     <Setting Name="Cam41" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.41.77</Value>
@@ -78,7 +78,7 @@
       <Value Profile="(Default)">192.168.41.113</Value>
     </Setting>
     <Setting Name="Cam45" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">/</Value>
     </Setting>
     <Setting Name="Cam51" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.41.79</Value>
@@ -87,13 +87,13 @@
       <Value Profile="(Default)">192.168.41.80</Value>
     </Setting>
     <Setting Name="Cam53" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">/</Value>
     </Setting>
     <Setting Name="Cam54" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">/</Value>
     </Setting>
     <Setting Name="Cam55" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">/</Value>
     </Setting>
     <Setting Name="Cam61" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.41.108</Value>
@@ -108,7 +108,13 @@
       <Value Profile="(Default)">192.168.41.111</Value>
     </Setting>
     <Setting Name="Cam65" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">/</Value>
+    </Setting>
+    <Setting Name="Threshold" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="RTSPport" Type="System.String" Scope="User">
+      <Value Profile="(Default)">554</Value>
     </Setting>
   </Settings>
 </SettingsFile>

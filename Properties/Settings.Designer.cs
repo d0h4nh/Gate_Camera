@@ -12,7 +12,7 @@ namespace GateCamera.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,174 +20,6 @@ namespace GateCamera.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.71")]
-        public string Cam11 {
-            get {
-                return ((string)(this["Cam11"]));
-            }
-            set {
-                this["Cam11"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.72")]
-        public string Cam12 {
-            get {
-                return ((string)(this["Cam12"]));
-            }
-            set {
-                this["Cam12"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Cam13 {
-            get {
-                return ((string)(this["Cam13"]));
-            }
-            set {
-                this["Cam13"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Cam14 {
-            get {
-                return ((string)(this["Cam14"]));
-            }
-            set {
-                this["Cam14"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Cam15 {
-            get {
-                return ((string)(this["Cam15"]));
-            }
-            set {
-                this["Cam15"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.73")]
-        public string Cam21 {
-            get {
-                return ((string)(this["Cam21"]));
-            }
-            set {
-                this["Cam21"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.74")]
-        public string Cam22 {
-            get {
-                return ((string)(this["Cam22"]));
-            }
-            set {
-                this["Cam22"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Cam23 {
-            get {
-                return ((string)(this["Cam23"]));
-            }
-            set {
-                this["Cam23"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Cam24 {
-            get {
-                return ((string)(this["Cam24"]));
-            }
-            set {
-                this["Cam24"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Cam25 {
-            get {
-                return ((string)(this["Cam25"]));
-            }
-            set {
-                this["Cam25"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.75")]
-        public string Cam31 {
-            get {
-                return ((string)(this["Cam31"]));
-            }
-            set {
-                this["Cam31"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.76")]
-        public string Cam32 {
-            get {
-                return ((string)(this["Cam32"]));
-            }
-            set {
-                this["Cam32"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Cam33 {
-            get {
-                return ((string)(this["Cam33"]));
-            }
-            set {
-                this["Cam33"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Cam34 {
-            get {
-                return ((string)(this["Cam34"]));
-            }
-            set {
-                this["Cam34"] = value;
             }
         }
         
@@ -253,6 +85,174 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.71")]
+        public string Cam11 {
+            get {
+                return ((string)(this["Cam11"]));
+            }
+            set {
+                this["Cam11"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.72")]
+        public string Cam12 {
+            get {
+                return ((string)(this["Cam12"]));
+            }
+            set {
+                this["Cam12"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
+        public string Cam13 {
+            get {
+                return ((string)(this["Cam13"]));
+            }
+            set {
+                this["Cam13"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
+        public string Cam14 {
+            get {
+                return ((string)(this["Cam14"]));
+            }
+            set {
+                this["Cam14"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
+        public string Cam15 {
+            get {
+                return ((string)(this["Cam15"]));
+            }
+            set {
+                this["Cam15"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.73")]
+        public string Cam21 {
+            get {
+                return ((string)(this["Cam21"]));
+            }
+            set {
+                this["Cam21"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.74")]
+        public string Cam22 {
+            get {
+                return ((string)(this["Cam22"]));
+            }
+            set {
+                this["Cam22"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
+        public string Cam23 {
+            get {
+                return ((string)(this["Cam23"]));
+            }
+            set {
+                this["Cam23"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
+        public string Cam24 {
+            get {
+                return ((string)(this["Cam24"]));
+            }
+            set {
+                this["Cam24"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
+        public string Cam25 {
+            get {
+                return ((string)(this["Cam25"]));
+            }
+            set {
+                this["Cam25"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.75")]
+        public string Cam31 {
+            get {
+                return ((string)(this["Cam31"]));
+            }
+            set {
+                this["Cam31"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.41.76")]
+        public string Cam32 {
+            get {
+                return ((string)(this["Cam32"]));
+            }
+            set {
+                this["Cam32"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
+        public string Cam33 {
+            get {
+                return ((string)(this["Cam33"]));
+            }
+            set {
+                this["Cam33"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
+        public string Cam34 {
+            get {
+                return ((string)(this["Cam34"]));
+            }
+            set {
+                this["Cam34"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("/Streaming/Channels/102/")]
         public string ViewLink {
             get {
@@ -265,7 +265,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
         public string Cam35 {
             get {
                 return ((string)(this["Cam35"]));
@@ -325,7 +325,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
         public string Cam45 {
             get {
                 return ((string)(this["Cam45"]));
@@ -361,7 +361,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
         public string Cam53 {
             get {
                 return ((string)(this["Cam53"]));
@@ -373,7 +373,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
         public string Cam54 {
             get {
                 return ((string)(this["Cam54"]));
@@ -385,7 +385,7 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
         public string Cam55 {
             get {
                 return ((string)(this["Cam55"]));
@@ -445,13 +445,37 @@ namespace GateCamera.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/")]
         public string Cam65 {
             get {
                 return ((string)(this["Cam65"]));
             }
             set {
                 this["Cam65"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public long Threshold {
+            get {
+                return ((long)(this["Threshold"]));
+            }
+            set {
+                this["Threshold"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("554")]
+        public string RTSPport {
+            get {
+                return ((string)(this["RTSPport"]));
+            }
+            set {
+                this["RTSPport"] = value;
             }
         }
     }
